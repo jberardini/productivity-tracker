@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %} Jill's Productivity Tracker {% endblock %}
+
+
+{% block content %}
+<link href="/static/homepage.css" rel="stylesheet">
+
+<h2>Productivity Tracker</h2>
+<h3>Today's date is <span id=day></span></h3>
+<div id='daysched'>
+	<h3>Daily Schedule</h3>
+	What time would you like to start?
+	<select id=starttime>
+		{% for t in times %}
+			<option value={{ t.time_id }}>{{ t.time }}</option>
+		{% endfor %}
+	</select><br>
+	What time would you like to end?
+	<select id=endtime>
+		{% for t in times %}
+			<option value={{ t.time_id }}>{{ t.time }}</option>
+		{% endfor %}
+	</select><br>
+	<button id=submittime>Go</button>
+	<div id='morning' class='timedivs' hidden></div>
+	<div id='afternoon' class='timedivs' hidden></div>
+	<div id='evening' class='timedivs' hidden></div>
+	<div id='habitdiv' hidden>
+		<p class='habits'>Gym</p>
+		<p class='habits'>Get ready</p>
+		<p class='habits'>Breakfast</p>
+		<p class='habits'>Lunch</p>
+		<p class='habits'>Dinner</p>
+		<p class='habits'>Travel</p>
+		<p class='habits'>Me time</p>
+	</div>
+	<button id='submitsched' hidden>Go</button>
+</div>
+
+{% endblock %}

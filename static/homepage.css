@@ -1,0 +1,14 @@
+#morning {
+	float: left;
+	width: 300px;
+}
+
+#afternoon {
+	float: left;
+	width: 300px;
+}
+
+#evening {
+	width: 300px;
+	float: left;
+}
