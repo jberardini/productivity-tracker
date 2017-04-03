@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table>
+	<tr>
+		<th>Times</th>
+		<th>Monday</th>
+		<th>Tuesday</th>
+		<th>Wednesday</th>
+		<th>Thursday</th>
+		<th>Friday</th>
+		<th>Saturday</th>
+		<th>Sunday</th>	
+	</tr>
+	{% for x in range(66) %}
+	<tr>
+		<td>
+			{{x}}
+		</td>
+		<td>
+			<input type="text" name="{{x}}">
+		</td>
+		<td>
+			<input type="text" name="{{x}}">
+		</td>
+		<td>	
+			<input type="text" name="{{x}}">
+		</td>
+		<td>	
+			<input type="text" name="{{x}}">
+		</td>
+		<td>
+			<input type="text" name="{{x}}">
+		</td>
+		<td>
+			<input type="text" name="{{x}}">
+		</td>
+		<td>
+			<input type="text" name="{{x}}">
+		</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endblock %}

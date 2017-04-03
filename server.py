@@ -29,6 +29,12 @@ def index():
 
 	return render_template('homepage.html', times=times)
 
+@app.route('/schedule')
+def schedule():
+	"""Schedule template"""
+
+	return render_template('schedule.html')
+
 @app.route('/schedule.json')
 def get_schedule():
 	"""Generates schedule for the day"""
