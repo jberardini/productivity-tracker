@@ -1,30 +1,29 @@
-Category,Activity
-Coursera,Scala Coursera
-Reading,Work reading
-Projects,Projects
-Sleep,Sleep
-Exercise,Gym
-Exercise,Run
-Exercise,Swim
-Exercise,Bike
-Exercise,Walk
-Errands,Dry cleaning
-Errands,Laundry
-Food preparation,Cooking
-Food preparation,Grocery shopping
-Religious activities,Church
-Religious activities,Unwinding
-High-level,Planning
-High-level,Scheduling
-High-level,Brainstorming
-Getting ready,Getting ready
-Getting ready,Pack
-Reading,Reading
-Visiting,Hanging with Bae
-Visiting,Friend date
-Visiting,Making breakfast
-Visiting,Dinner
-Visiting,Movie
-Fun cooking,Fun cooking
-Arts and crafts,Cross stitching
-Fun coursera,History Coursera
+1,Scala Coursera
+2,Work reading
+3,Projects
+4,Sleep
+5,Gym
+5,Run
+5,Swim
+5,Bike
+5,Walk
+6,Dry cleaning
+6,Laundry
+7,Cooking
+7,Grocery shopping
+8,Church
+8,Unwinding
+9,Planning
+9,Scheduling
+9,Brainstorming
+10,Getting ready
+10,Pack
+11,Reading
+12,Hanging with Bae
+12,Friend date
+12,Making breakfast
+12,Dinner
+12,Movie
+13,Fun cooking
+14,Cross stitching
+15,History Coursera

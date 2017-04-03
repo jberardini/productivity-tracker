@@ -5,7 +5,7 @@ from __future__ import print_function
 from jinja2 import StrictUndefined
 from flask import Flask, jsonify, render_template, redirect, request, flash, session, g
 from flask_debugtoolbar import DebugToolbarExtension
-from model import connect_to_db, db, Time, Activity
+from model import connect_to_db, db, Activity, Category
 from sqlalchemy import and_
 from datetime import datetime
 import sys
@@ -35,40 +35,16 @@ def schedule():
 
 	return render_template('schedule.html')
 
-@app.route('/schedule.json')
-def get_schedule():
-	"""Generates schedule for the day"""
-
-	start_time_id = request.args.get('start_time_id')
-	end_time_id = request.args.get('end_time_id')
-
-	schedule_times = db.session.query(Time.str_time, Time.time_id).filter(and_(Time.time_id>=start_time_id,
-														Time.time_id<=end_time_id)).all()
-
-	times_to_send = {'times': schedule_times}
-
-	return jsonify(times_to_send)
-
-@app.route('/save.json')
-def save_schedule():
-	"""Saves schedule to database"""
-
-	activities = request.args.getlist('activities[]')
-	times = request.args.getlist('times[]')
-	day = request.args.get('date').split(" ")
-	serialized_date = "{}/{}/{}".format(day[1], day[2], day[3])
-	formatted_date = datetime.strptime(serialized_date, '%b/%d/%Y')
+@app.route('/lookup.json')
+def look_up():
+	"""Checks if a typed activity is already categorized in the database"""
 
 
-	for i in range(len(activities)):
-		new_activity = Activity(name=activities[i], time=times[i], date=formatted_date)
-		print(new_activity, file=sys.stderr)
-        db.session.add(new_activity)
+	typed_activity = request.args.get('activity', 0, type=str)
 
-	db.session.commit()
-	
+	matching_activity = db.session.query(Activity).filter(Activity.activity_name==typed_activity).all()
 
-	return "success"
+	return jsonify(matching_activity)
 
 
 if __name__ == "__main__":

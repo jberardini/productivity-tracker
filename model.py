@@ -31,6 +31,12 @@ class Category(db.Model):
 	hours = db.Column(db.Integer)
 	color = db.Column(db.String(10), nullable=False)
 
+
+	def __repr__(self):
+		"""Provides a repesentation of activities"""
+
+		return '<Category category_name = {}>'.format(self.category_name)
+
 class Activity(db.Model):
 	"""Activities planned for a given day"""
 
@@ -40,12 +46,13 @@ class Activity(db.Model):
 	category_id = db.Column(db.Integer, db.ForeignKey('categories.category_id'))
 	activity_name = db.Column(db.String(200), nullable=False)
 
-	 neighborhood = db.relationship('Neighborhood', backref=db.backref('users', 
-                                                                      order_by=user_id))
+	category = db.relationship('Category', backref=db.backref('activities', 
+                                                                      order_by=activity_id))
 
 	def __repr__(self):
 		"""Provides a repesentation of activities"""
 
+		return '<Activity activity_name = {} category = {}>'.format(self.activity_name, self.category_id)
 
 def connect_to_db(app, db_uri='postgresql:///todo'):
     """Connect the database to Flask app"""
