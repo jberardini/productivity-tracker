@@ -5,19 +5,31 @@ db = SQLAlchemy()
 #####################################################
 # Model Defintions
 
-class Time(db.Model):
-	"""Times of day, in 15 minute chunks"""
+# class Time(db.Model):
+# 	"""Times of day, in 15 minute chunks"""
 
-	__tablename__ = 'times'
+# 	__tablename__ = 'times'
 
-	time_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-	time = db.Column(db.Time(timezone=False), nullable=False)
-	str_time = db.Column(db.String(100), nullable=False)
+# 	time_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+# 	time = db.Column(db.Time(timezone=False), nullable=False)
+# 	str_time = db.Column(db.String(100), nullable=False)
 
-	def __repr__(self):
-		"""Provides a representation of times"""
+# 	def __repr__(self):
+# 		"""Provides a representation of times"""
 
-		return '<Time time = {}>'.format(self.time)
+# 		return '<Time time = {}>'.format(self.time)
+
+
+class Category(db.Model):
+	"""Categories of activities to do"""
+
+	__tablename__ = 'categories'
+
+	category_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	bucket_name = db.Column(db.String(200), nullable=False)
+	category_name = db.Column(db.String(200), nullable=False)
+	hours = db.Column(db.Integer)
+	color = db.Column(db.String(10), nullable=False)
 
 class Activity(db.Model):
 	"""Activities planned for a given day"""
@@ -25,9 +37,11 @@ class Activity(db.Model):
 	__tablename__ = 'activities'
 
 	activity_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-	name = db.Column(db.String(200), nullable=False)
-	time = db.Column(db.Integer, db.ForeignKey('times.time_id'))
-	date = db.Column(db.Date, nullable=False)
+	category_id = db.Column(db.Integer, db.ForeignKey('categories.category_id'))
+	activity_name = db.Column(db.String(200), nullable=False)
+
+	 neighborhood = db.relationship('Neighborhood', backref=db.backref('users', 
+                                                                      order_by=user_id))
 
 	def __repr__(self):
 		"""Provides a repesentation of activities"""

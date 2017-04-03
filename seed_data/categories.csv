@@ -1,0 +1,16 @@
+Bucket,Category,Hours,Color
+Work,Work Coursera,10,#8cd98c
+Work,Work reading,6,#39ac39
+Work,Projects,28,#206020
+Sleep,Sleep,56,#ff6666
+Life maintenance,Exercise,7,#e6f2ff
+Life maintenance,Errands,4,#b3d9ff
+Life maintenance,Food preparation,5,#80bfff
+Life maintenance,Religious activities,5,#4da6ff
+Life maintenance,High-level,3,#1a8cff
+Life maintenance,Getting ready,8,#0073e6
+Leisure,Fun reading,8,#ffcc80
+Leisure,Visiting,16,#ffb84d
+Leisure,Fun cooking,4,#ffa31a
+Leisure,Arts and crafts,4,#e68a00
+Leisure,Fun Coursera,4,#b36b00

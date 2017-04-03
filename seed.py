@@ -19,6 +19,20 @@ def load_times():
 			db.session.add(db_time)
 		db.session.commit()
 
+
+def load_categories():
+	print "Categories"
+
+	Category.query.delete()
+
+	with open('seed_data/categories.csv', 'rb') as categories_csvfile:
+		categories = csv.reader(categories_csvfile, delimiter=',')
+		for c in categories:
+			bucket, category, hours, color = c
+			db_category = Category(bucket_name=bucket, category_name=category, hours=hours, color=color)
+			db.session.add(db_category)
+		db.session.commit()
+
 if __name__ == "__main__":
     connect_to_db(app)
     db.create_all()
